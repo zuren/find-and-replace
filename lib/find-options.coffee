@@ -6,6 +6,7 @@ Params = [
   'replacePattern'
   'pathsPattern'
   'useRegex'
+  'useScript'
   'wholeWord'
   'caseSensitive'
   'inCurrentSelection'
@@ -22,6 +23,7 @@ class FindOptions
     @replacePattern = state.replacePattern ? ''
     @pathsPattern = state.pathsPattern ? ''
     @useRegex = state.useRegex ? atom.config.get('find-and-replace.useRegex') ? false
+    @useScript = state.useScript ? atom.config.get('find-and-replace.useScript') ? false
     @caseSensitive = state.caseSensitive ? atom.config.get('find-and-replace.caseSensitive') ? false
     @wholeWord = state.wholeWord ? atom.config.get('find-and-replace.wholeWord') ? false
     @inCurrentSelection = state.inCurrentSelection ? atom.config.get('find-and-replace.inCurrentSelection') ? false
@@ -33,6 +35,9 @@ class FindOptions
 
   onDidChangeUseRegex: (callback) ->
     @emitter.on('did-change-useRegex', callback)
+
+  onDidChangeUseScript: (callback) ->
+    @emitter.on('did-change-useScript', callback)
 
   onDidChangeReplacePattern: (callback) ->
     @emitter.on('did-change-replacePattern', callback)
